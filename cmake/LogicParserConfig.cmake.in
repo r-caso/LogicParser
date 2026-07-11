@@ -1,0 +1,8 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(LogicAST REQUIRED)
+
+include("${CMAKE_CURRENT_LIST_DIR}/LogicParserTargets.cmake")
+
+check_required_components(LogicParser)

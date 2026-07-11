@@ -1,0 +1,265 @@
+﻿{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}"
+    },
+    {
+      "name": "windows-base",
+      "hidden": true,
+      "inherits": "base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl.exe",
+        "CMAKE_CXX_COMPILER": "cl.exe"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "linux-base",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "macos-base",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    },
+    {
+      "name": "macos-xcode-base",
+      "hidden": true,
+      "inherits": "base",
+      "generator": "Xcode",
+      "cacheVariables": {
+        "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    },
+    {
+      "name": "freebsd-base",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "FreeBSD"
+      }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "x64 Debug (Windows)",
+      "inherits": "windows-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "$env{VSINSTALLDIR}Common7/IDE/CommonExtensions/Microsoft/CMake/cmake/Microsoft/SegmentHeap.cmake"
+      }
+    },
+    {
+      "name": "windows-release",
+      "displayName": "x64 Release (Windows)",
+      "inherits": "windows-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "$env{VSINSTALLDIR}Common7/IDE/CommonExtensions/Microsoft/CMake/cmake/Microsoft/SegmentHeap.cmake"
+      }
+    },
+    {
+      "name": "linux-debug",
+      "displayName": "x64 Debug (Linux)",
+      "inherits": "linux-base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "x64 Release (Linux)",
+      "inherits": "linux-base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "macos-debug",
+      "displayName": "X64 Debug (MacOS)",
+      "inherits": "macos-base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "macos-release",
+      "displayName": "x64 Release (MacOS)",
+      "inherits": "macos-base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "macos-xcode",
+      "displayName": "x64 Macos (Xcode)",
+      "inherits": "macos-xcode-base"
+    },
+    {
+      "name": "freebsd-debug",
+      "displayName": "x64 Debug (FreeBSD)",
+      "inherits": "freebsd-base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "freebsd-release",
+      "displayName": "x64 Release (FreeBSD)",
+      "inherits": "freebsd-base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows-debug"
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release"
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug"
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release"
+    },
+    {
+      "name": "macos-debug",
+      "configurePreset": "macos-debug"
+    },
+    {
+      "name": "macos-release",
+      "configurePreset": "macos-release"
+    },
+    {
+      "name": "freebsd-debug",
+      "configurePreset": "freebsd-debug"
+    },
+    {
+      "name": "freebsd-release",
+      "configurePreset": "freebsd-release"
+    },
+    {
+      "name": "macos-xcode-debug",
+      "displayName": "x64 Debug build (MacOS, Xcode)",
+      "configurePreset": "macos-xcode",
+      "configuration": "Debug"
+    },
+    {
+      "name": "macos-xcode-release",
+      "displayName": "x64 Release build (MacOS, Xcode)",
+      "configurePreset": "macos-xcode",
+      "configuration": "Release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "test-base",
+      "hidden": true,
+      "output": { "outputOnFailure": true },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": false
+      }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "windows Debug Tests",
+      "inherits": "test-base",
+      "configurePreset": "windows-debug"
+    },
+    {
+      "name": "windows-release",
+      "displayName": "windows Release Tests",
+      "inherits": "test-base",
+      "configurePreset": "windows-release"
+    },
+    {
+      "name": "linux-debug",
+      "displayName": "Linux Debug Tests",
+      "inherits": "test-base",
+      "configurePreset": "linux-debug"
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release Tests",
+      "inherits": "test-base",
+      "configurePreset": "linux-release"
+    },
+    {
+      "name": "macos-debug",
+      "displayName": "macOS Debug Tests",
+      "inherits": "test-base",
+      "configurePreset": "macos-debug"
+    },
+    {
+      "name": "macos-release",
+      "displayName": "macOS Release Tests",
+      "inherits": "test-base",
+      "configurePreset": "macos-release"
+    },
+    {
+      "name": "macos-xcode-debug",
+      "displayName": "macOS Xcode Debug Tests",
+      "inherits": "test-base",
+      "configurePreset": "macos-xcode",
+      "configuration": "Debug"
+    },
+    {
+      "name": "macos-xcode-release",
+      "displayName": "macOS Xcode Release Tests",
+      "inherits": "test-base",
+      "configurePreset": "macos-xcode",
+      "configuration": "Release"
+    },
+    {
+      "name": "freebsd-debug",
+      "displayName": "FreeBSD Debug Tests",
+      "inherits": "test-base",
+      "configurePreset": "freebsd-debug"
+    },
+    {
+      "name": "freebsd-release",
+      "displayName": "FreeBSD Release Tests",
+      "inherits": "test-base",
+      "configurePreset": "freebsd-release"
+    }
+  ]
+}

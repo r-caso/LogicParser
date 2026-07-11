@@ -1,0 +1,45 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "<PLATFORM>-debug-local",
+      "displayName": "x64 Debug (local)",
+      "inherits": "<PLATFORM>-debug",
+      "environment": {
+        "CMAKE_PREFIX_PATH": "<PATH_TO_LOGICAST_DEBUG>;$penv{CMAKE_PREFIX_PATH}"
+      }
+    },
+    {
+      "name": "<PLATFORM>-release-local",
+      "displayName": "x64 Release (local)",
+      "inherits": "<PLATFORM>-release",
+      "environment": {
+        "CMAKE_PREFIX_PATH": "<PATH_TO_LOGICAST_RELEASE>;$penv{CMAKE_PREFIX_PATH}"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "<PLATFORM>-debug-local",
+      "configurePreset": "<PLATFORM>-debug-local"
+    },
+    {
+      "name": "{PLAFTORM}-release-local",
+      "configurePreset": "<PLATFORM>-release-local"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "<PLATFORM>-debug-local",
+      "displayName": "<PLATFORM> Debug Tests",
+      "inherits": "test-base",
+      "configurePreset": "<PLATFORM>-debug-local"
+    },
+    {
+      "name": "<PLATFORM>-release-local",
+      "displayName": "<PLATFORM> Release Tests",
+      "inherits": "test-base",
+      "configurePreset": "<PLATFORM>-release-local"
+    }
+  ]
+}
