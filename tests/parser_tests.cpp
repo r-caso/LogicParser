@@ -5,8 +5,8 @@
 
 #include "LogicAST/LogicAST.hpp"
 
-#include "LogicParser/Parser.hpp"
-#include "LogicParser/Lexer.hpp"
+#include "LogicParser/parser.hpp"
+#include "LogicParser/lexer.hpp"
 
 using namespace iif_sadaf::talk;
 using namespace iif_sadaf::talk::LogicParser;
