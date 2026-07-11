@@ -17,15 +17,15 @@ A flexible, high-performance, and fully configurable C++23 parser library for pr
 ## Codebase Map
 
 - **Headers**:
-  - [Parser.hpp](LogicParser/include/LogicParser/Parser.hpp): The main library entry point exposing `parse_propositional` and `parse_first_order`.
-  - [ParserConfig.hpp](LogicParser/include/LogicParser/ParserConfig.hpp): Configuration structure for operator properties (precedence, associativity, arity), quantifier mappings, and term regexes.
-  - [Lexer.hpp](LogicParser/include/LogicParser/Lexer.hpp): Lexer declarations.
-  - [Token.hpp](LogicParser/include/LogicParser/Token.hpp): Token structures and categories.
+  - [parser.hpp](include/LogicParser/parser.hpp): The main library entry point exposing `parse_propositional` and `parse_first_order`.
+  - [parser_config.hpp](include/LogicParser/parser_config.hpp): Configuration structure for operator properties (precedence, associativity, arity), quantifier mappings, and term regexes.
+  - [lexer.hpp](include/LogicParser/lexer.hpp): Lexer declarations.
+  - [token.hpp](include/LogicParser/token.hpp): Token structures and categories.
 - **Source**:
-  - [Parser.cpp](LogicParser/src/Parser.cpp): Implementation of the precedence climbing parser.
-  - [Lexer.cpp](LogicParser/src/Lexer.cpp): Implementation of the maximal-munch tokenizer.
+  - [parser.cpp](src/parser.cpp): Implementation of the precedence climbing parser.
+  - [lexer.cpp](src/lexer.cpp): Implementation of the maximal-munch tokenizer.
 - **Tests**:
-  - [ParserTests.cpp](LogicParser/tests/ParserTests.cpp): Complete suite of unit tests.
+  - [ParserTests.cpp](tests/parser_tests.cpp): Complete suite of unit tests.
 
 ---
 
