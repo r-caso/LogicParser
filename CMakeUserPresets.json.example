@@ -6,7 +6,7 @@
       "displayName": "x64 Debug (local)",
       "inherits": "<PLATFORM>-debug",
       "environment": {
-        "CMAKE_PREFIX_PATH": "<PATH_TO_LOGICAST_DEBUG>;$penv{CMAKE_PREFIX_PATH}"
+        "CMAKE_PREFIX_PATH": "<PATH_TO_LOGICAST_DEBUG>"
       }
     },
     {
@@ -14,7 +14,7 @@
       "displayName": "x64 Release (local)",
       "inherits": "<PLATFORM>-release",
       "environment": {
-        "CMAKE_PREFIX_PATH": "<PATH_TO_LOGICAST_RELEASE>;$penv{CMAKE_PREFIX_PATH}"
+        "CMAKE_PREFIX_PATH": "<PATH_TO_LOGICAST_RELEASE>"
       }
     }
   ],
@@ -24,7 +24,7 @@
       "configurePreset": "<PLATFORM>-debug-local"
     },
     {
-      "name": "{PLAFTORM}-release-local",
+      "name": "{PLATFORM}-release-local",
       "configurePreset": "<PLATFORM>-release-local"
     }
   ],
