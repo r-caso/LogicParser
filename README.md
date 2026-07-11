@@ -25,7 +25,7 @@ A flexible, high-performance, and fully configurable C++23 parser library for pr
   - [parser.cpp](src/parser.cpp): Implementation of the precedence climbing parser.
   - [lexer.cpp](src/lexer.cpp): Implementation of the maximal-munch tokenizer.
 - **Tests**:
-  - [ParserTests.cpp](tests/parser_tests.cpp): Complete suite of unit tests.
+  - [parser_tests.cpp](tests/parser_tests.cpp): Complete suite of unit tests.
 
 ---
 
